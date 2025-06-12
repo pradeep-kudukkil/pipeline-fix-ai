@@ -28,7 +28,7 @@ jobs:
           echo "haii" 2>>error.txt
           echo "Simulating a failure..." 2>>error.txt 
           echo "::error file=main.py,line=1::Example error message" 2>>error.txt 
-          cat kdjwefke.txt 2>>error.txt 
+          docker -kk 2>>error.txt 
 
       - name: Run AutoFixer
         if: steps.test-step.outcome == 'failure'
