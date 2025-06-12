@@ -1,0 +1,31 @@
+name: Run HuggingFace AI Script
+
+on:
+  workflow_dispatch:
+    inputs:
+      error_message:
+        description: 'Error message to analyze'
+        required: true
+        type: string
+
+jobs:
+  run-ai:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install huggingface_hub
+
+      - name: Run AutoFixer Script
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          ERROR_MESSAGE: ${{ github.event.inputs.error_message }}
+        run: python autoFixer.py
