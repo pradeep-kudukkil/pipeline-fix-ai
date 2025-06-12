@@ -25,13 +25,12 @@ jobs:
         continue-on-error: true
         run: |
           exec 2>>error.txt
-          echo "workflow content"
-          cat run-ai-script.yml > error.txt
+          echo "workflow content" >> error.txt
+          cat run-ai-script.yml >> error.txt
           echo "error"
           echo "haii" 
           echo "Simulating a failure..." 
           echo "::error file=main.py,line=1::Example error message"
-          cat error.txt
           docker --versio
 
       - name: Run AutoFixer
