@@ -25,11 +25,12 @@ jobs:
         continue-on-error: true
         run: |
           > error.txt
-          echo "haii" 2>>error.txt
-          echo "Simulating a failure..." 2>>error.txt 
-          echo "::error file=main.py,line=1::Example error message" 2>>error.txt 
-          docker -kk 2>>error.txt 
-
+          exec 2>>error.txt
+          echo "haii" 
+          echo "Simulating a failure..." 
+          echo "::error file=main.py,line=1::Example error message"
+          docker -kk 
+          
       - name: Run AutoFixer
         if: steps.test-step.outcome == 'failure'
         env:
