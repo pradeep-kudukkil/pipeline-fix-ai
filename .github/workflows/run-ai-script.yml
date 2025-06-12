@@ -30,8 +30,7 @@ jobs:
           echo "Simulating a failure..." 
           echo "::error file=main.py,line=1::Example error message"
           docker --version
-
-          top -hj
+          tob
 
       - name: Run AutoFixer
         if: steps.test-step.outcome == 'failure'
