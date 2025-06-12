@@ -25,10 +25,10 @@ jobs:
         continue-on-error: true
         run: |
           > error.txt
-          echo "haii" 2>>error.txt || true
-          echo "Simulating a failure..." 2>>error.txt || true
-          echo "::error file=main.py,line=1::Example error message" 2>>error.txt || true
-          cat kdjwefke.txt 2>>error.txt || true
+          echo "haii" 2>>error.txt
+          echo "Simulating a failure..." 2>>error.txt 
+          echo "::error file=main.py,line=1::Example error message" 2>>error.txt 
+          cat kdjwefke.txt 2>>error.txt 
 
       - name: Run AutoFixer
         if: steps.test-step.outcome == 'failure'
