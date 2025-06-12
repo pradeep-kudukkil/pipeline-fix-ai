@@ -24,15 +24,11 @@ jobs:
         id: test-step
         continue-on-error: true
         run: |
-          echo "Simulating a failure..."
-          echo "::error file=main.py,line=1::Example error message"
-          cat kdjwefke.txt
-
-      - name: Capture Error Message
-        if: steps.test-step.outcome == 'failure'
-        run: |
-          echo "Step failed. Saving error message..."
-          echo "Traceback (most recent call last):\n  File \"main.py\", line 1, in <module>\n    raise Exception('Something broke')" > error.txt
+          > error.txt
+          echo "haii" 2>>error.txt || true
+          echo "Simulating a failure..." 2>>error.txt || true
+          echo "::error file=main.py,line=1::Example error message" 2>>error.txt || true
+          cat kdjwefke.txt 2>>error.txt || true
 
       - name: Run AutoFixer
         if: steps.test-step.outcome == 'failure'
