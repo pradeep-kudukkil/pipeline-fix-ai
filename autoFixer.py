@@ -17,7 +17,7 @@ completion = client.chat.completions.create(
     messages=[
         {
             "role": "user",
-            "content": f"I am getting error in my GitHub Actions workflow. workflow content and error i am attaching, provide the solution for the following error, and provide new corrected workflow:\n\n{error_log}"
+            "content": f"Please provide the solution for the following error:\n\n{error_log}"
         }
     ],
 )
