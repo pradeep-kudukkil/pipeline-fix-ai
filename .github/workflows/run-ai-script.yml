@@ -29,8 +29,7 @@ jobs:
           echo "haii" 
           echo "Simulating a failure..." 
           echo "::error file=main.py,line=1::Example error message"
-          docker --version
-          tob
+          docker pull nginxe
 
       - name: Run AutoFixer
         if: steps.test-step.outcome == 'failure'
