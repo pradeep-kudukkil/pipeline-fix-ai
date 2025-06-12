@@ -19,21 +19,21 @@ jobs:
         continue-on-error: true
         run: |
           echo "Simulating error"
-          echo "::error file=test.py,line=1::Something broke"
+          echo "::error file=main.py,line=2::Something broke in step 2"
           exit 1
 
       - name: Capture Error
         id: capture-error
         if: steps.fail.outcome == 'failure'
         run: |
-          echo "error=Step 2 failed: Something broke" >> $GITHUB_OUTPUT
+          echo "error=Step 2 failed: Something broke in step 2" >> $GITHUB_OUTPUT
 
   trigger-fixbot:
     needs: main
     if: needs.main.result == 'failure'
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger FixBot Workflow
+      - name: Trigger AutoFixer Workflow
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: run-ai-script.yml
@@ -41,4 +41,3 @@ jobs:
           ref: main
           inputs:
             error_message: ${{ needs.main.outputs.error_message }}
-        secrets: inherit
