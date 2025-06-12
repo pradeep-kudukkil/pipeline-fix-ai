@@ -26,7 +26,7 @@ jobs:
         run: |
           echo "Simulating a failure..."
           echo "::error file=main.py,line=1::Example error message"
-          exit 1
+          cat kdjwefke.txt
 
       - name: Capture Error Message
         if: steps.test-step.outcome == 'failure'
