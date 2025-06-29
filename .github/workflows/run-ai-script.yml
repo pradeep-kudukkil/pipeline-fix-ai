@@ -27,9 +27,8 @@ jobs:
           exec 2>>error.txt
           echo "error"
           echo "haii" 
-          echo "Simulating a failure..." 
-          echo "::error file=main.py,line=1::Example error message"
-          docker pull nginxe
+          docker pull nginx
+          apt-get install ngin -y
 
       - name: Run AutoFixer
         if: steps.test-step.outcome == 'failure'
