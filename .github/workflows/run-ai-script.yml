@@ -25,9 +25,9 @@ jobs:
         continue-on-error: true
         run: |
           exec 2>>error.txt
-          echo "error"
+          ech "error"
           echo "haii" 
-          docker pull ngin
+          docker pull nginx
 
       - name: Run AutoFixer
         if: steps.test-step.outcome == 'failure'
