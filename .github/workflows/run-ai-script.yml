@@ -27,8 +27,7 @@ jobs:
           exec 2>>error.txt
           echo "error"
           echo "haii" 
-          docker pull nginx
-          apt-get install ngin -y
+          docker pull ngin
 
       - name: Run AutoFixer
         if: steps.test-step.outcome == 'failure'
